@@ -9,7 +9,6 @@ function App() {
         <Route path="/" element={<Auth />} />
         <Route path="/dash" element={<Dashboard />} />
         <Route path="/portfolio" element={<Portfolio />} />
-
       </Routes>
     </BrowserRouter>
   )
