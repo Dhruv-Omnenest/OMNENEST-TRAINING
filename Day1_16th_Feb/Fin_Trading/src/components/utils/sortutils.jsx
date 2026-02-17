@@ -1,4 +1,6 @@
-export const getSortedProducts = (products, sortBy) => {
+import memoize from 'lodash/memoize';
+
+export const getSortedProducts = memoize((products, sortBy) => {
     const sortedProducts = [...products];
     
     if (sortBy === 'price-low-high') {
@@ -15,5 +17,6 @@ export const getSortedProducts = (products, sortBy) => {
     }
     
     return sortedProducts;
-};
-
+}, (products, sortBy) => {
+    return `${products.length}-${sortBy}`; 
+});
