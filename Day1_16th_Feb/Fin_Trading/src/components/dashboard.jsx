@@ -14,8 +14,6 @@ function Dashboard() {
         location: "New York, USA",
     }
     const [showPortfolio, setShowPortfolio] = useState(false);
-
-
     if (showPortfolio) {
 
         return (<div className="dashboard">
