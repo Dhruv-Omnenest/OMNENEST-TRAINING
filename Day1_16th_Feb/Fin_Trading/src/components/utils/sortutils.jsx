@@ -1,5 +1,4 @@
-import memoize from 'lodash/memoize';
-
+import lodash, { memoize } from 'lodash';
 export const getSortedProducts = memoize((products, sortBy) => {
     const sortedProducts = [...products];
     
