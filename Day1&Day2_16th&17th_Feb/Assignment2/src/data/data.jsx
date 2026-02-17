@@ -1,0 +1,64 @@
+const stockData = [
+  {
+    Date: "2026-02-15",
+    Open: 300.12,
+    High: 305.4,
+    Low: 298.9,
+    Close: 304.22,
+    AdjClose: 304.22,
+    Volume: 32100000,
+  },
+  {
+    Date: "2026-02-16",
+    Open: 304.5,
+    High: 308.2,
+    Low: 302.1,
+    Close: 307.15,
+    AdjClose: 307.15,
+    Volume: 28700000,
+  },
+  {
+    Date: "2026-02-17",
+    Open: 307.3,
+    High: 310.8,
+    Low: 305.2,
+    Close: 309.95,
+    AdjClose: 309.95,
+    Volume: 29850000,
+  },
+  {
+    Date: "2026-02-18",
+    Open: 310.0,
+    High: 315.5,
+    Low: 308.0,
+    Close: 312.8,
+    AdjClose: 312.8,
+    Volume: 30500000,
+  },{
+    Date: "2026-02-19",
+    Open: 312.5,
+    High: 318.0,
+    Low: 310.5,
+    Close: 316.4,
+    AdjClose: 316.4,
+    Volume: 31000000,
+  },{
+    Date: "2026-02-20",
+    Open: 316.8,
+    High: 320.2,
+    Low: 315.0,
+    Close: 319.1,
+    AdjClose: 319.1,
+    Volume: 29500000,
+  },{
+    Date: "2026-02-21",
+    Open: 319.5,
+    High: 325.0,
+    Low: 318.0,
+    Close: 322.3,
+    AdjClose: 322.3,
+    Volume: 32000000,
+  }
+];
+
+export default stockData;
