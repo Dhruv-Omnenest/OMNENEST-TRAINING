@@ -17,7 +17,6 @@ export default function StockFilter() {
       if (priceLow && row.Low < Number(priceLow)) return false;
       if (priceHigh && row.High > Number(priceHigh)) return false;
       if (volume && row.Volume < Number(volume)) return false;
-
       return true;
     });
   }, [dateFrom, dateTo, priceLow, priceHigh, volume]);
