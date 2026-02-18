@@ -18,7 +18,14 @@ function FilterByCategory({ selectedCategory, setSelectedCategory, categories })
           {categories.map((category) => (
             <button
               key={category}
-              onClick={() => setSelectedCategory(category)}
+              onClick={() =>
+                 {
+                  console.log(category);
+                  setSelectedCategory(category)
+                 }
+
+              }
+              
               style={{
                 padding: '8px 16px',
                 border: '2px solid #0066cc',

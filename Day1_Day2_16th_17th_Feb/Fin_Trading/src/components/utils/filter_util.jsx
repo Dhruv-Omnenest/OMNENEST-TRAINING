@@ -1,12 +1,14 @@
-import { products } from "../../data/data";
-  function getFilteredProducts({ selectedCategory })  {
-    if (selectedCategory === 'all') {
-      return products;
+function getFilteredProducts({ selectedCategory, products, showOnlyInStock }) {
+    let result = products;
+
+    if (selectedCategory !== 'all') {
+        result = result.filter(product => product.category.trim() === selectedCategory);
     }
-    return products.filter(product => 
-      product.category === selectedCategory
-    );
-  }; 
+    if (showOnlyInStock) {
+        result = result.filter(product => product.inStock === true);
+    }
 
+    return result;
+}
 
-  export  default getFilteredProducts;
+export default getFilteredProducts;

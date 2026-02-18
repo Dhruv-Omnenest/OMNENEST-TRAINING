@@ -17,5 +17,6 @@ export const getSortedProducts = memoize((products, sortBy) => {
     
     return sortedProducts;
 }, (products, sortBy) => {
-    return `${products.length}-${sortBy}`; 
+    const productIds = products.map(p => p.id).join(',');
+    return `${productIds}-${sortBy}`; 
 });

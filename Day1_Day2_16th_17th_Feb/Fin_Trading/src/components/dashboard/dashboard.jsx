@@ -1,18 +1,20 @@
 import { useState } from "react";
-import Footer from "../layout/header";
 import ProductCard from "../cards/productcard";
 import { products } from "../../data/data";
 import { getSortedProducts } from "../utils/sortutils";
 import SortAndFilter from "../sortandfilter/sortandfilter";
 import FilterByCategory from "../sortandfilter/filterByCategory";
 import getFilteredProducts from "../utils/filter_util";
+import StockFilter from "../sortandfilter/stock_filter";
+
 
 function Dashboard() {
     const [sortBy, setSortBy] = useState('default');
     const [selectedCategory, setSelectedCategory] = useState('all');
-    const uniqueCategories = ['all', ...new Set(products.map(p => p.category))];
+    const [showOnlyInStock, setShowOnlyInStock] = useState(false);
+    const uniqueCategories = ['all', ...new Set(products.map(p => p.category.trim()))];
     const filteredProducts = getFilteredProducts(
-        { selectedCategory }
+        { selectedCategory, products,showOnlyInStock }
     );
     const displayProducts = getSortedProducts(filteredProducts, sortBy);
     return (
@@ -22,6 +24,10 @@ function Dashboard() {
                     categories={uniqueCategories}
                     selectedCategory={selectedCategory}
                     setSelectedCategory={setSelectedCategory}
+                />
+                <StockFilter 
+                    showOnlyInStock={showOnlyInStock} 
+                    setShowOnlyInStock={setShowOnlyInStock} 
                 />
             </div>
             <div>
@@ -40,7 +46,6 @@ function Dashboard() {
                     ))}
                 </div>
             </div>
-            <Footer />
         </>
     );
 }
