@@ -8,10 +8,8 @@ export default function StockFilter() {
   const [priceLow, setPriceLow] = useState("");
   const [priceHigh, setPriceHigh] = useState("");
   const [volume, setVolume] = useState("");
-
-  const filteredData = useMemo(() => {
-    return stockData.filter((row) => {
-
+  const filteredData = useMemo( () => {
+    return stockData.filter((row) => {   
       if (dateFrom && row.Date < dateFrom) return false;
       if (dateTo && row.Date > dateTo) return false;
       if (priceLow && row.Low < Number(priceLow)) return false;
@@ -19,8 +17,7 @@ export default function StockFilter() {
       if (volume && row.Volume < Number(volume)) return false;
       return true;
     });
-  }, [dateFrom, dateTo, priceLow, priceHigh, volume]);
-
+  }, [dateFrom, dateTo, priceLow, priceHigh, volume] );
   return (
     <div style={{ padding: 20 }}>
       <h2>Stock Filter</h2>
@@ -39,6 +36,7 @@ export default function StockFilter() {
             <th>High</th>
             <th>Low</th>
             <th>Close</th>
+            <th>Adj Close</th>
             <th>Volume</th>
           </tr>
         </thead>
@@ -51,6 +49,7 @@ export default function StockFilter() {
               <td>{row.High}</td>
               <td>{row.Low}</td>
               <td>{row.Close}</td>
+              <td>{row.AdjClose}</td>
               <td>{row.Volume}</td>
             </tr>
           ))}

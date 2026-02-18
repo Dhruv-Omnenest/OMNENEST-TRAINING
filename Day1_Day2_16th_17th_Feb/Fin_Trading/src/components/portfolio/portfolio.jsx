@@ -1,4 +1,4 @@
-import UserCard from "./userCard";
+import UserCard from "../cards/usercard";
 
 
 function Portfolio({ name, balance, profilePicture, onBack }) {

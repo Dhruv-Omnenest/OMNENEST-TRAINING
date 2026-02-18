@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Dashboard from './components/dashboard'
-import Portfolio from './components/portfolio'
-import Auth from './components/Auth'
+import Dashboard from './components/dashboard/dashboard.jsx'
+import Portfolio from './components/portfolio/portfolio.jsx'
+import Auth from './components/auth/Auth.jsx'
 function App() {
   return (
     <BrowserRouter>

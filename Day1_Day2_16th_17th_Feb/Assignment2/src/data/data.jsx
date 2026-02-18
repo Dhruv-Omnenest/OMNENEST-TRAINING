@@ -35,7 +35,7 @@ const stockData = [
     AdjClose: 312.8,
     Volume: 30500000,
   },{
-    Date: "2026-02-19",
+    Date: "2026-01-19",
     Open: 312.5,
     High: 318.0,
     Low: 310.5,
@@ -43,7 +43,7 @@ const stockData = [
     AdjClose: 316.4,
     Volume: 31000000,
   },{
-    Date: "2026-02-20",
+    Date: "2026-01-20",
     Open: 316.8,
     High: 320.2,
     Low: 315.0,
@@ -51,13 +51,31 @@ const stockData = [
     AdjClose: 319.1,
     Volume: 29500000,
   },{
-    Date: "2026-02-21",
+    Date: "2026-01-21",
     Open: 319.5,
     High: 325.0,
     Low: 318.0,
     Close: 322.3,
     AdjClose: 322.3,
     Volume: 32000000,
+  },
+  {
+    Date: "2026-01-22",
+    Open: 322.0,
+    High: 328.5,
+    Low: 320.0,
+    Close: 326.7,
+    AdjClose: 326.7,
+    Volume: 33000000,
+  },
+  {
+    Date: "2026-01-23",
+    Open: 326.5,
+    High: 330.0,
+    Low: 324.5,
+    Close: 328.9,
+    AdjClose: 328.9,
+    Volume: 31500000,
   }
 ];
 
