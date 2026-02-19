@@ -1,5 +1,15 @@
+import { useToggle } from '../hook/useToggle';
 
-function ProductCard({ product, onViewDetails, isFavorite, onToggleWishlist,inWishList=false }) {
+function ProductCard({
+  product,
+  onViewDetails,
+  isFavorite,
+  onToggleWishlist,
+  inWishList = false
+}) {
+
+  const [showDesc, toggleDesc] = useToggle(false);
+
   return (
     <div 
       style={{
@@ -11,7 +21,7 @@ function ProductCard({ product, onViewDetails, isFavorite, onToggleWishlist,inWi
         cursor: 'pointer',
         transition: 'transform 0.2s, box-shadow 0.2s'
       }}
-    
+
       onMouseOver={(e) => {
         e.currentTarget.style.transform = 'translateY(-5px)';
         e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.15)';
@@ -22,36 +32,37 @@ function ProductCard({ product, onViewDetails, isFavorite, onToggleWishlist,inWi
       }}
       onClick={() => onViewDetails(product.id)}
     >
-      { !inWishList && <   button
-        onClick={(e) => {
-          e.stopPropagation();        
-          onToggleWishlist(product.id); 
-        }}
-        style={{
-          position: 'absolute',
-          top: '10px',
-          right: '10px',
-          background: 'white',
-          border: '1px solid #eee',
-          borderRadius: '50%',
-          width: '32px',
-          height: '32px',
-          cursor: 'pointer',
-          boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
-          zIndex: 2,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          fontSize: '18px',
-          // UI dynamically changes based on isFavorite prop
-          color: isFavorite ? '#ff4757' : '#ccc', 
-          transition: 'transform 0.2s'
-        }}
-      >
-        {isFavorite ? '♥' : '♡'}
-      </button>
-}
 
+ 
+      {!inWishList && (
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            onToggleWishlist(product.id);
+          }}
+          style={{
+            position: 'absolute',
+            top: '10px',
+            right: '10px',
+            background: 'white',
+            border: '1px solid #eee',
+            borderRadius: '50%',
+            width: '32px',
+            height: '32px',
+            cursor: 'pointer',
+            boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontSize: '18px',
+            color: isFavorite ? '#ff4757' : '#ccc'
+          }}
+        >
+          {isFavorite ? '♥' : '♡'}
+        </button>
+      )}
+
+  
       <img
         src={product.image}
         alt={product.title}
@@ -62,7 +73,8 @@ function ProductCard({ product, onViewDetails, isFavorite, onToggleWishlist,inWi
           marginBottom: '10px'
         }}
       />
-      
+
+   
       <h3 style={{
         fontSize: '14px',
         margin: '0 0 10px 0',
@@ -71,7 +83,8 @@ function ProductCard({ product, onViewDetails, isFavorite, onToggleWishlist,inWi
       }}>
         {product.title}
       </h3>
-      
+
+   
       <div style={{ marginBottom: '10px' }}>
         <span style={{ color: '#ff9900' }}>
           {'★'.repeat(Math.floor(product.rating.rate))}
@@ -80,7 +93,8 @@ function ProductCard({ product, onViewDetails, isFavorite, onToggleWishlist,inWi
           ({product.rating.count})
         </span>
       </div>
-      
+
+    
       <p style={{
         fontSize: '20px',
         fontWeight: 'bold',
@@ -89,6 +103,34 @@ function ProductCard({ product, onViewDetails, isFavorite, onToggleWishlist,inWi
       }}>
         ${product.price}
       </p>
+
+
+      <button
+        onClick={(e) => {
+          e.stopPropagation();
+          toggleDesc();
+        }}
+        style={{
+          marginTop: "8px",
+          padding: "5px 10px",
+          cursor: "pointer"
+        }}
+      >
+        {showDesc ? "▲ Hide Description" : "▼ Show Description"}
+      </button>
+
+      {showDesc && (
+        <p
+          style={{
+            marginTop: '10px',
+            fontSize: '12px',
+            color: '#333'
+          }}
+        >
+          {product.description}
+        </p>
+      )}
+
     </div>
   );
 }

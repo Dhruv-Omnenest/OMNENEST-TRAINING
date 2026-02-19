@@ -6,6 +6,7 @@
   import Cart from './components/Cart';
   import User from './components/Users';
   import WishList from './components/wishList';
+import BackToTop from './components/BackToTop';
 
   function App() {
     const [currentView, setCurrentView] = useState('products');
@@ -71,6 +72,9 @@
           currentView === 'wishlist' && 
           <WishList onClose={handleBackToProducts} onViewDetails={handleViewDetails}/>
         }
+
+
+        <BackToTop />
       </div>
     );
   }

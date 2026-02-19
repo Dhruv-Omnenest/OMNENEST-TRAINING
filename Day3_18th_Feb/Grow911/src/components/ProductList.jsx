@@ -1,9 +1,9 @@
-// src/components/ProductList.jsx
 import { useState, useEffect } from 'react';
 import ProductCard from './ProductCard';
 import Search from './Search';
 import { useProductSearch } from '../hook/useProductSearch';
 import { useWishlist } from '../hook/useWishList';
+import { useWindowSize } from '../hook/useWindowSize';
 
 function ProductList({ onViewDetails }) {
   const [products, setProducts] = useState([]);
@@ -12,9 +12,16 @@ function ProductList({ onViewDetails }) {
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [searchQuery, setSearchQuery] = useState("");
+  const { width } = useWindowSize();
 
   const { filteredProducts, isSearching } = useProductSearch(products, searchQuery);
   const { toggleWishlist, isInWishlist } = useWishlist();
+  const getGridColumns = () => {
+  if (width < 480)  return '1fr'; 
+  if (width < 768)  return 'repeat(2, 1fr)';
+  if (width < 1024) return 'repeat(3, 1fr)'; 
+  return 'repeat(auto-fill, minmax(220px, 1fr))'; 
+};
 
   useEffect(() => {
     fetch('https://fakestoreapi.com/products/categories')
@@ -119,9 +126,10 @@ function ProductList({ onViewDetails }) {
           </button>
         ))}
       </div>
+
       <div style={{
         display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))',
+        gridTemplateColumns: getGridColumns(),
         gap: '20px',
         opacity: isSearching ? 0.3 : 1,
         transition: 'opacity 0.2s ease'
@@ -135,6 +143,7 @@ function ProductList({ onViewDetails }) {
             onToggleWishlist={toggleWishlist}
           />
         ))}
+
         {!isSearching && filteredProducts.length === 0 && (
           <div style={{ textAlign: 'center', gridColumn: '1 / -1', padding: '40px' }}>
             <p style={{ fontSize: '18px', color: '#666' }}>
