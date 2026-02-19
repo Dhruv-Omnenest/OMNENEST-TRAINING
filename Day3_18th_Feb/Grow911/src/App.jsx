@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import ProductList from './components/ProductList';
 import ProductDetail from './components/ProductDetail';
 import Cart from './components/Cart';
+import User from './components/Users';
 
 function App() {
   const [currentView, setCurrentView] = useState('products');
@@ -24,6 +25,11 @@ function App() {
     setCurrentView('cart');
   };
 
+
+  const handleViewUser=()=>{
+    setCurrentView('users');
+  }
+
   const handleAddToCart = (product) => {
     addToCart(product);
     alert(`${product.title} added to cart!`);
@@ -31,7 +37,7 @@ function App() {
 
   return (
     <div style={{ minHeight: '100vh', background: '#f5f5f5' }}>
-      <Navbar onViewCart={handleViewCart} />
+      <Navbar onViewCart={handleViewCart} onViewUser={handleViewUser} />
       
       {currentView === 'products' && (
         <ProductList onViewDetails={handleViewDetails} />
@@ -48,6 +54,13 @@ function App() {
       {currentView === 'cart' && (
         <Cart onClose={handleBackToProducts} />
       )}
+
+
+      {
+        currentView==='users' && (
+          <User onClose={handleBackToProducts} />
+        )
+      }
     </div>
   );
 }

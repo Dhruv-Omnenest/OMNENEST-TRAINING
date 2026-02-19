@@ -58,7 +58,7 @@ function ProductList({ onViewDetails }) {
   }
 
   return (
-    <div style={{ padding: '20px', maxWidth: '1200px', margin: '0 auto' }}>
+    <div style={{ padding: '20px', maxWidth: '1200px', margin: '0 auto',background:'white' }}>
       <h1>Product Store</h1>
       
       {/* Category Buttons */}
