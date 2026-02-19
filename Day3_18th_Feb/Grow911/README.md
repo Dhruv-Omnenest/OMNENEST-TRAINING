@@ -6,11 +6,8 @@ Done in Users.jsx
 
 1.Write Custom hook to show and hide Desc in Product Card
 <br/>
-
 2.Write Custom hook to scroll back on Top after 300px scroll
-
 <br/>
-
 3.Write Custom hook to resize display product grid depending on screen size
 
 
