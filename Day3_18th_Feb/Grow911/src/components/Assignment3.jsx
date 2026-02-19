@@ -7,7 +7,7 @@ function Assignment(){
   display: 'flex',
   flexWrap: 'wrap',
   gap: '20px',
-  justifyContent: 'center'
+  justifyContent: 'flex-start'
 };
 
 const cardStyle = {
@@ -70,9 +70,6 @@ const addressStyle = {
         <div>
 
         {
-            users.map(
-                (user)=>(
-                   <>
                    <div style={containerStyle}>
         {users.map((user) => (
           <div key={user.id} style={cardStyle}>
@@ -97,9 +94,8 @@ const addressStyle = {
           </div>
         ))}
       </div>
-                   </>
-                )
-            )
+           
+          
         }
 
         </div>
