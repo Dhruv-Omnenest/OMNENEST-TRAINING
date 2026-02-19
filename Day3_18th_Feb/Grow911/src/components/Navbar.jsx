@@ -1,7 +1,11 @@
 import { useCart } from '../context/CardContext';
+import { useWishlist } from '../hook/useWishList';
 
-function Navbar({ onViewCart, onViewUser }) {
+function Navbar({ onViewCart, onViewUser, onViewWishList }) {
   const { getCartCount } = useCart();
+  const { wishlist } = useWishlist();
+
+  const wishlistCount = wishlist?.length || 0; 
   const cartCount = getCartCount();
 
   return (
@@ -14,15 +18,24 @@ function Navbar({ onViewCart, onViewUser }) {
 
         <div style={styles.buttonGroup}>
           <button onClick={onViewUser} style={styles.secondaryBtn}>
-            👤 Users
+            Users
           </button>
 
-          <button onClick={onViewCart} style={styles.cartBtn}>
+          <button 
+            onClick={onViewCart} 
+            style={{ ...styles.secondaryBtn, position: 'relative' }}
+          >
             <span>🛒</span>
             <span>Cart</span>
             {cartCount > 0 && (
               <span style={styles.badge}>{cartCount}</span>
             )}
+          </button>
+          <button 
+            onClick={onViewWishList} 
+            style={{ ...styles.secondaryBtn, position: 'relative' }}
+          >
+            <span>WishList</span>
           </button>
         </div>
       </div>
@@ -81,22 +94,9 @@ const styles = {
     fontSize: '14px',
     fontWeight: '600',
     transition: 'all 0.2s ease',
-  },
-  cartBtn: {
-    padding: '8px 20px',
-    background: '#0066cc',
-    color: 'white',
-    border: 'none',
-    borderRadius: '8px',
-    cursor: 'pointer',
-    fontSize: '14px',
-    fontWeight: '600',
-    position: 'relative',
     display: 'flex',
     alignItems: 'center',
-    gap: '8px',
-    transition: 'transform 0.1s active',
-    boxShadow: '0 4px 10px rgba(0, 102, 204, 0.2)',
+    gap: '5px'
   },
   badge: {
     position: 'absolute',

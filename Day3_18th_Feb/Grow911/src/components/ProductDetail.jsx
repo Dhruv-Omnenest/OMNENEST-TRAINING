@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-function ProductDetail({ productId, onBack, onAddToCart }) {
+function ProductDetail({ productId, onBack, onAddToCart}) {
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
