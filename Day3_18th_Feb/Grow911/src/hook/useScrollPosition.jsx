@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-export function useScrollPosition(threshold = 300) {
+export function useScrollPosition(threshold = 50) {
   const [showButton, setShowButton] = useState(false);
 
   useEffect(() => {
